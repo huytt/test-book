@@ -52,13 +52,13 @@ services:
             MYSQL_ROOT_HOST: '%'
             MYSQL_ROOT_PASSWORD: admin
         volumes:
-            - ./mysqldata:/var/lib/mysql
+            - mysqldata:/var/lib/mysql
             - ./docker/database:/opt/database:cached
     elasticsearch:
         image: docker.elastic.co/elasticsearch/elasticsearch:8.1.3
         container_name: elasticsearch
         volumes:
-            - ./elasticsearch-data:/usr/share/elasticsearch/data
+            - elasticsearch-data:/usr/share/elasticsearch/data
         environment:
             - ELASTIC_PASSWORD=admin
             - discovery.type=single-node
@@ -68,3 +68,6 @@ services:
             - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
         ports:
             - "9200:9200"
+volumes:
+    elasticsearch-data:
+    mysqldata:

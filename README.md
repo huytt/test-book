@@ -34,14 +34,14 @@ Enjoy Coding :)
 
 ## Run Source Code
 ```
-- docker-compose up -d
-- docker exec -it db-mysql bash // (access container to restore db)
-- mysql -u root -p < /opt/database/db_exam.sql // (password: admin)
-- click: ctrl + p + q // (exit container after restore db)
-- docker exec -it web composer install
-- docker exec -it web cp -r opt/docker/patch/SearchableListFactory.php vendor/matchish/laravel-scout-elasticsearch/src/Searchable/SearchableListFactory.php
-- docker restart jobs
-- docker exec -it web php artisan scout:import
+docker-compose up -d
+docker exec -it web composer install
+docker exec -it web cp -r /opt/docker/patch/SearchableListFactory.php vendor/matchish/laravel-scout-elasticsearch/src/Searchable/SearchableListFactory.php
+docker exec -it db-mysql bash // (access container to restore db)
+mysql -u root -p < /opt/database/db_exam.sql // (password: admin)
+click: ctrl + p + q // (exit container after restore db)
+docker-compose up -d --force-recreate
+docker exec -it web php artisan scout:import
 ```
 
 ## Run seeder if don't wanna use database example:
